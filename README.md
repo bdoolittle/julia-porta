@@ -3,6 +3,10 @@ julia-porta
 
 A version of the [PORTA](http://porta.zib.de/) software intended for cross-platform deployment via [julia](https://julialang.org/).
 
+## PORTA in Julia
+
+The julia programming language provides utilities for packaging C libraries for cross-platform deployment. The [BinaryBuilder.jl](https://github.com/JuliaPackaging/BinaryBuilder.jl) julia package reliably cross-compiles software to run on supported platforms. The end result is a julia module, `porta_jll`, containing the executables for all supported platforms and the logic to run the correct executable on that platform. 
+
 ## PORTA (POlyhedron Representation Transformation Algorithm)
 
 "PORTA is a collection of [C] routines for analyzing polytopes and polyhedra. The polyhedra are either given as the convex hull of a set of points plus (possibly) the convex cone of a set of vectors, or as a system of linear equations and inequalities." -([porta](http://porta.zib.de/)).
@@ -212,6 +216,3 @@ Enumeration of integral inner points of  a  linear  system.
               from  the  input  filename  by  replacing  the suffix '.ieq' with
 
 
-## PORTA in Julia
-
-The julia programming language provides utilities for packaging C libraries for cross-platform deployment. The [BinaryBuilder.jl](https://github.com/JuliaPackaging/BinaryBuilder.jl) julia package reliably cross-compiles software to run on supported platforms. The end result is a julia module, `porta_jll`, containing the executables for all supported platforms and the logic to run the correct executable on that platform. 
