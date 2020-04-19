@@ -3,13 +3,13 @@ julia-porta
 
 A version of the [PORTA](http://porta.zib.de/) software intended for cross-platform deployment via [julia](https://julialang.org/).
 
-## PORTA in Julia
-
-The julia programming language provides utilities for packaging C libraries for cross-platform deployment. The [BinaryBuilder.jl](https://github.com/JuliaPackaging/BinaryBuilder.jl) julia package reliably cross-compiles software to run on supported platforms. The end result is a julia module, `porta_jll`, containing the executables for all supported platforms and the logic to run the correct executable on that platform. 
-
 ## PORTA (POlyhedron Representation Transformation Algorithm)
 
 "PORTA is a collection of [C] routines for analyzing polytopes and polyhedra. The polyhedra are either given as the convex hull of a set of points plus (possibly) the convex cone of a set of vectors, or as a system of linear equations and inequalities." -([porta](http://porta.zib.de/)).
+
+## PORTA in Julia
+
+The julia programming language provides utilities for packaging C libraries for cross-platform deployment. The [BinaryBuilder.jl](https://github.com/JuliaPackaging/BinaryBuilder.jl) julia package reliably cross-compiles software to run on supported platforms. The end result is a julia module, `porta_jll`, containing the executables for all supported platforms and the logic to run the correct executable on that platform. 
 
 ## Using PORTA
 
@@ -17,9 +17,9 @@ The GNU makefile compiles two executables, `xporta` and `valid`. The compiled bi
 
 Note: The usage documentation is taken verbatim from the porta `man` pages.
 
-### xporta
+## xporta
 
-The compiled `xporta` binary exposes the follo. Read the `man` pages for details about `.poi` and `.ieq` file formats.
+The compiled `xporta` binary exposes the following methods.  See `julia-porta/INFO` and the `man` pages and for more details.
 
 #### `dim` 
 
@@ -104,6 +104,7 @@ Transformation of polyhedron representations.
 * `xporta -T [-poscvl] filename_with_suffix_'.ieq'_or'.poi'`
 
 **Description:**
+
        traf   transforms  polyhedra between the following  two  representations:
                      - convex hull of points + convex cone of vectors (poi-representation)
                      - system of linear equations and inequalities (ieq-representation)
@@ -149,7 +150,7 @@ Transformation of polyhedron representations.
               storage requirements.  Note: Output values which exceed the 32-bit integer storage size
               are written in hexadecimal format (hex). Such hexadecimal format can not be reread as input.
 
-### valid
+## valid
 
 The compiled `valid` binary exposes the following methods. See `julia-porta/INFO` and the `man` pages and for more details.
 
