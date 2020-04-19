@@ -1,3 +1,8 @@
+porta.log
+
+# ignore changes to examples/
+examples/*
+
 # Object files
 *.o
 *.ko
@@ -7,6 +12,13 @@
 # Libraries
 *.lib
 *.a
+
+# Dependency files
+*.d
+
+# Compiled binary files
+gnu-make/bin/valid
+gnu-make/bin/xporta
 
 # Shared objects (inc. Windows DLLs)
 *.dll
