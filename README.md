@@ -11,11 +11,11 @@ A version of the [PORTA](http://porta.zib.de/) software intended for cross-platf
 
 The julia programming language provides utilities for packaging C libraries for cross-platform deployment. The [BinaryBuilder.jl](https://github.com/JuliaPackaging/BinaryBuilder.jl) julia package reliably cross-compiles software to run on supported platforms. The end result is a julia module, `porta_jll`, containing the executables for all supported platforms and the logic to run the correct executable on that platform. 
 
-## Using PORTA
+# PORTA Documentation
 
 The GNU makefile compiles two executables, `xporta` and `valid`. The compiled binaries read and write `.ieq` and `.poi` files (please refer to `julia-porta/INFO` for complete documentation). `xporta` and `valid` each expose methods documented below.
 
-Note: The usage documentation is taken verbatim from the porta `man` pages.
+**Note: To preserve the original intent of the authors, the following documentation is taken verbatim from the porta `INFO` file and `man` pages. Copying the official documentation into this README.md is intended to make the documentation more accessible. Any references of this work should cite the original authors, please refer to `CITATION.bib` for the appropriate reference.**
 
 ## xporta
 
@@ -217,5 +217,127 @@ Enumeration of integral inner points of  a  linear  system.
               exactly dim  integers.  The  i-th  entry  of such a line gives the upper resp.  lower bound
               for the i-th component.  vint writes the points found into a file.  The  filename  results
               from  the  input  filename  by  replacing  the suffix '.ieq' with
+              
+## General File Format:
+
+Files with name suffix `.ieq` contain a representation of a
+polyhedron as a system of linear equations and inequalities.
+Files with name suffix `.poi` contain a representation of a
+polyhedron as the convex hull of a set of points and possibly
+the convex cone of a set of vectors. The format is uniform
+for both of `.ieq`- and `.poi`-files in having several sections
+headed  by an indicator line with a specific capitalized key-
+word, the first line stating the dimension <n> as
+
+       DIM = <n>  
+
+and the last line containing the keyword
+
+       END  
+
+The sections are specific to the `.ieq` and `.poi` polyhedron
+representations with the exception of comment sections indica-
+ted by the keyword
+
+       COMMENT
+
+and a 'valid'-section which may appear in both types of files.
+
+A 'valid'-section is headed by the keyword
+
+       VALID
+
+which indicates that the next line specifies a valid point for 
+the system of inequalities and equations by `<n>` rational values
+in the format 
+
+       <numerator>/<denominator> ...
+
+A denominator with value 1 can be omitted. A valid point is
+required by the function `traf` in case 0 is not valid for the
+system.
+
+There is no restriction concerning the order of sections and
+some sections are optional. There are sections specific to PORTA 
+functions, such must be present in an input file for executing
+the corresponding function.
+
+
+### Format (sections) of `.ieq`-files:
+---------------------------------------
+
+#### `INEQUALITIES_SECTION`
+    
+Subsequent lines contain inequalities or equations, one per line, with format 
+
+       (<line>) <lhs> <rel> <rhs> 
+   
+       <line> - line number (optional)
+
+       <lhs>: <term{1}> +|- <term{2}>  ... +|- <term{n}>
+
+       <term{i}>: <num{i}>/<den{i}> x{i} , i in {1,...<n>} 
+
+       <rel>: <= | >= | => | =< | = | == 
+     
+       <rhs>: <num_rhs>/<den_rhs>
+
+The values are rational, represented by numerators `<num{i}>`
+and denominators `<den{i}>`, `i` taken from `{1,...,<n>}`. A denominator
+with value 1 can be omitted.
+
+#### `LOWER BOUNDS`
+
+The next line specifies lower bounds for the components of 
+the system by `<n>` integer values such that the i-th entry refers
+to the i-th component. The lower bounds are used by the
+function `vint` for enumerating integral points.
+
+#### `UPPER BOUNDS`
+
+The next line specifies upper bounds for the components of 
+the system by `<n>` integer values such that the i-th entry refers
+to the i-th component. The upper bounds are used by the
+function `vint` for enumerating integral points.
+
+#### `ElIMINATION ORDER`
+
+The next line specifies a set of variables to be eliminated 
+by the function `fmel` and the order of elimination by `<n>` integer
+values. A value 0 as the i-th entry of the line indicates 
+that the i-th variable must not be eliminated, a value j, `0 < j`,
+`j < <n>`, as the i-th entry of the line indicates that the i-th
+variable should be eliminated in the j-th iteration. All non-zero
+numbers must be different and it must be possible to put 
+into an order 1,2,3,... .
+ 
+See file `example.ieq` for `.ieq` format illustration.
+
+
+### Format (sections) of `.poi`- files:
+----------------------------------------
+
+#### `CONV_SECTION`
+
+Subsequent lines contain specifications of points, one per 
+line by <n> rational values, the line format is 
+
+       (<line>) <num{1}>/<den{1}> ...  <num{n}>/<num{n}> 
+
+       <line> - line number (optional)
+
+       <num{i}> - i-th numerator
+      
+       <den{i}> - i-th denominator, a denominator with value 1 can be omitted
+
+If a `CONV_SECTION` is missing (the case of a cone) the origin 
+is assumed to be feasible.
+
+#### `CONE_SECTION`
+
+Subsequent lines contains specification of vectors, one per
+line, the line format is the same as for points. 
+
+See file `example.poi` for `.poi` format illustration.
 
 
