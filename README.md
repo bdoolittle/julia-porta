@@ -287,21 +287,21 @@ The values are rational, represented by numerators `<num{i}>`
 and denominators `<den{i}>`, `i` taken from `{1,...,<n>}`. A denominator
 with value 1 can be omitted.
 
-#### `LOWER BOUNDS`
+#### `LOWER_BOUNDS`
 
 The next line specifies lower bounds for the components of 
 the system by `<n>` integer values such that the i-th entry refers
 to the i-th component. The lower bounds are used by the
 function `vint` for enumerating integral points.
 
-#### `UPPER BOUNDS`
+#### `UPPER_BOUNDS`
 
 The next line specifies upper bounds for the components of 
 the system by `<n>` integer values such that the i-th entry refers
 to the i-th component. The upper bounds are used by the
 function `vint` for enumerating integral points.
 
-#### `ElIMINATION ORDER`
+#### `ElIMINATION_ORDER`
 
 The next line specifies a set of variables to be eliminated 
 by the function `fmel` and the order of elimination by `<n>` integer
