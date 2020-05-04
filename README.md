@@ -15,7 +15,9 @@ The julia programming language provides utilities for packaging C libraries for 
 
 The GNU makefile compiles two executables, `xporta` and `valid`. The compiled binaries read and write `.ieq` and `.poi` files (please refer to `julia-porta/INFO` for complete documentation). `xporta` and `valid` each expose methods documented below.
 
-**Note: To preserve the original intent of the authors, the following documentation is taken verbatim from the porta `INFO` file and `man` pages. Copying the official documentation into this README.md is intended to make the documentation more accessible. Any references of this work should cite the original authors, please refer to `CITATION.bib` for the appropriate reference.**
+**Note:**
+* To preserve the intent of the authors, the following documentation is taken verbatim from the porta `INFO` file and `man` pages. Copying the official documentation into `README.md` is intended to make the documentation more accessible.
+* Any reference of this work should cite the original authors. Please refer to `CITATION.bib` for the appropriate reference.
 
 ## xporta
 
