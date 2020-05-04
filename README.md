@@ -263,8 +263,7 @@ functions, such must be present in an input file for executing
 the corresponding function.
 
 
-### Format (sections) of `.ieq`-files:
----------------------------------------
+## Format (sections) of `.ieq`-files:
 
 #### `INEQUALITIES_SECTION`
     
@@ -314,8 +313,7 @@ into an order 1,2,3,... .
 See file `example.ieq` for `.ieq` format illustration.
 
 
-### Format (sections) of `.poi`- files:
-----------------------------------------
+## Format (sections) of `.poi`- files:
 
 #### `CONV_SECTION`
 
