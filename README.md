@@ -164,13 +164,17 @@ Checks inequalities for facet inducing property.
 
 **Description:**
 
-        fctp  performs  a check whether the inequalities  given  in  the the 'poi'-input file.
-              For all inequalities fctp does the following: In a first step fctp checks if the
-              inequality is valid.  If  this is  not  the  case  fctp writes the points and rays
-              which are not valid into a file.   In a  second  step fctp computes those valid points
-              and rays which satisfy the inequality with equality and - if there are any - writes
-              them into a file. For these points and rays the dimension is computed by using the
-              routine  'dim'.   The  filenames  result   from   the   ieq-filename   by appending
+        fctp  checks whether a set of inequalities given in a '.ieq'-file is facet inducing for
+              a polyhedron given by a '.poi'-file. For all inequalities fctp does the following:
+                    
+                    - In a first step fctp checks if the inequality is valid. If  this is  not
+                       the  case  fctp writes the points and rays which are not valid into a file.
+                     
+                    - In a  second  step fctp computes those valid points and rays which satisfy
+                      the inequality with equality and - if there are any - writes them into a file.
+              
+              For these points and rays the dimension is computed by using the
+              routine  'dim'.   The  filenames  result   from   the   '.ieq'-filename   by appending
               first the number of the corresponding inequality and then the suffix '.poi' resp.
               '.poi.poi'.
 
