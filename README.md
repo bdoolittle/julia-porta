@@ -188,8 +188,8 @@ Enumeration of equations  and  inequalities  that are valid for a convex cone an
 
        iespo  is  a simple enumeration routine which enumerates the subset of equations  and
               inequalities in the 'ieq' input file which are valid (not necessarily facet inducing) for
-              the polyhedron given by the The output is written into an 'ieq'-file, whose name is derived
-              from the 'poi'-input filename.
+              the polyhedron given by the 'poi' input file. The output is written into an 'ieq'-file,
+              whose name is derived from the 'poi'-input filename.
 
 **Options:**
 
